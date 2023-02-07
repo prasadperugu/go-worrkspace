@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"encoding/base64"
 	"fmt"
 	"net/http"
 	"time"
@@ -26,6 +27,10 @@ var users = []User{
 		Role:  "clinician",
 	},
 }
+func getRequestPassword() string {
+	// Replace this function with your code to retrieve the password from the request
+	return "SomePassword"
+}
 
 func getToken(w http.ResponseWriter, r *http.Request) {
 	var request struct {
@@ -36,9 +41,17 @@ func getToken(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 		return
 	}
+	password := "SomePassword"
+	encodedPassword := base64.StdEncoding.EncodeToString([]byte(password))
+	if requestPassword := getRequestPassword(); requestPassword != password {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	fmt.Println("Authorized")
+	fmt.Println("Encoded password:", encodedPassword)
 
 	// Verify the password
-	if request.Password != "SomePassword" {
+	if  request.Password != "encodedPassword" {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}

@@ -4,24 +4,30 @@ import
 (
 	"fmt"
 	"net/http"
+	
 )
 
-const url = "https://teams.microsoft.com/_#/conversations/48:notes?ctx=chat"
+
 
 func main(){
 
-	fmt.Println("Web Request",url)
-
-	response, err := http.Get(url)
-
-	if err!=nil{
-		panic(err)
-
-	}
-	fmt.Printf("%T/n",response);
-	response.Body.Close()
-
-
+	fmt.Println("Welcome to web application")
+	performGetRequest()
 
 
 }
+
+func performGetRequest(){
+	const myurl = "http://localhost:8080"
+	 res,err := http.GET(myurl)
+	 if err !=nil {
+		panic(err)
+	 }
+
+	 defer response.Body.Close()
+	 fmt.Println("status code:", response.StatusCode)
+	 content, _ :=ioutil.ReadAll(response.Body)
+	 fmt.Println(string(content))
+
+}
+
