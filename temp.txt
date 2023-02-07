@@ -1,0 +1,5 @@
+curl -X POST 'http://localhost:8080/myapp' --header 'Accept: */*' --header 'Content-Type: application/json' --data-raw '{"name": "nandu"}'
+curl -X GET 'http://localhost:8080' --header 'Accept: */*'
+use maps instead of array
+have password stored as base64 encoded
+call /infoapi
