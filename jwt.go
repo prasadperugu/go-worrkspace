@@ -1,11 +1,12 @@
 package main
 
 import (
-	"encoding/json"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
+
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -27,6 +28,7 @@ var users = []User{
 		Role:  "clinician",
 	},
 }
+
 func getRequestPassword() string {
 	// Replace this function with your code to retrieve the password from the request
 	return "SomePassword"
@@ -51,7 +53,7 @@ func getToken(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Encoded password:", encodedPassword)
 
 	// Verify the password
-	if  request.Password != "encodedPassword" {
+	if request.Password != "encodedPassword" {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
 	}
@@ -71,11 +73,11 @@ func getToken(w http.ResponseWriter, r *http.Request) {
 
 	// Create the JWT token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"sub":  "my-api",
-		"iat":  time.Now().Unix(),
-		"name": user.Name,
+		"sub":   "my-api",
+		"iat":   time.Now().Unix(),
+		"name":  user.Name,
 		"email": user.Email,
-		"role": user.Role,
+		"role":  user.Role,
 	})
 
 	// Sign and get the complete encoded token as a string

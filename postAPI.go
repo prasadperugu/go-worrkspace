@@ -13,9 +13,9 @@ type Name struct {
 
 type Response struct {
 	Gender string `json:"gender"`
-	Name struct {
+	Name   struct {
 		First string `json:"first"`
-		Last string `json:"last"`
+		Last  string `json:"last"`
 	} `json:"name"`
 	Email string `json:"email"`
 }
@@ -34,7 +34,7 @@ func main() {
 				Gender: "male",
 				Name: struct {
 					First string `json:"first"`
-					Last string `json:"last"`
+					Last  string `json:"last"`
 				}{
 					First: "Erol",
 					Last:  "Diehl",
@@ -54,8 +54,8 @@ func main() {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
 	})
-	fmt.Println("prasad");
+	fmt.Println("prasad")
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
-//The main function sets up an HTTP handler for the /myapp endpoint that listens for POST requests and returns a JSON response.
+	// The main function sets up an HTTP handler for the /myapp endpoint that listens for POST requests and returns a JSON response.
 }

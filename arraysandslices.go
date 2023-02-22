@@ -16,7 +16,7 @@ func main(){
 	fmt.Println("Grades: %v", grades1);
 	//to get an length of an array
 	fmt.Println("length of an array is",len(students));
-
+    
 	a := [...]int {1,4,6,7,78};
 	b :=a;
 	//will change the original address using that & oeprator
@@ -27,7 +27,7 @@ func main(){
 
 
 
-	//slices exampe
+	//slices example
 	//  p := [...] {2,4,5,64,54};//elminate these dots from here that's it;
 	 p := []int {3,4,42,44,66,341,1};
 	 q := p[:] //slice all the elements
